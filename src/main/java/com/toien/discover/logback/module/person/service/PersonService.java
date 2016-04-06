@@ -1,9 +1,9 @@
-package com.toien.discover.logback.person.service;
+package com.toien.discover.logback.module.person.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.toien.discover.logback.person.dao.PersonDao;
+import com.toien.discover.logback.module.person.dao.PersonDao;
 
 public class PersonService {
 	

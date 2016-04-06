@@ -1,7 +1,9 @@
-package com.toien.discover.logback.person.service;
+package com.toien.discover.logback.module.person.service;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.toien.discover.logback.module.person.service.PersonService;
 
 public class PersonServiceTest {
 	
