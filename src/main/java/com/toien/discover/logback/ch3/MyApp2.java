@@ -22,6 +22,20 @@ import ch.qos.logback.core.util.StatusPrinter;
 public class MyApp2 {
 	final static Logger logger = LoggerFactory.getLogger(MyApp2.class);
 
+	/**
+	 * run like:
+	 * 
+	 * <pre>
+	 * discover-logback>mvn -Dlogback.configurationFile="src/main/java/com/toien/discover/logback/ch3/sample2.xml" exec:java -Dexec.mainClass="com.toien.discover.logback.ch3.MyApp2"
+	 * 
+	 * <pre>
+	 * discover-logback>mvn -Dlogback.configurationFile="src/main/java/com/toien/discover/logback/ch3/variableSubstitution1.xml" exec:java -Dexec.mainClass="com.toien.discover.logback.ch3.MyApp2"
+	 * 
+	 * <pre>
+	 * discover-logback>mvn -Dlogback.configurationFile="src/main/java/com/toien/discover/logback/ch3/variableSubstitution1.xml" -DUSER_HOME="/tmp/home/sebastien" exec:java -Dexec.mainClass="com.toien.discover.logback.ch3.MyApp2"
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// assume SLF4J is bound to logback in the current environment
 		LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
