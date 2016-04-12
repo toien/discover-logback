@@ -15,5 +15,7 @@
 	<p>This is logback center</p>
 	
 	<p><a href="log/info/10">info 10</a></p>
+	<p><a href="log/error">make a error</a></p>
+	<p><a href="log/longname">info from a long name method</a></p>
 </body>
 </html>

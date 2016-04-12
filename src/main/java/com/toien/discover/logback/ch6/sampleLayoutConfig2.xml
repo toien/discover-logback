@@ -1,0 +1,15 @@
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<layout class="com.toien.discover.logback.ch6.MySampleLayout2">
+				<prefix>MyPrefix</prefix>
+				<printThreadName>true</printThreadName>
+			</layout>
+		</encoder>
+	</appender>
+
+	<root level="debug">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

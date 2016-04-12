@@ -14,11 +14,27 @@ public class LogController {
 	private static Logger logger = LoggerFactory.getLogger(LogController.class);
 
 	@RequestMapping("info/{num}")
-	public ModelAndView add(@PathVariable int num) {
+	public ModelAndView addInfo(@PathVariable int num) {
 		
 		for(int i = 0; i < num; i++) {
 			logger.info("request log info message {}", i);
 		}
+		
+		return new ModelAndView("/index.jsp");
+	}
+	
+	@RequestMapping("error")
+	public ModelAndView makeError() {
+		
+		logger.error("request log error", new RuntimeException("This is a normal RuntimeException."));
+		
+		return new ModelAndView("/index.jsp");
+	}
+	
+	@RequestMapping("longname")
+	public ModelAndView aReallyReallyReallyReallyReallyReallyReallyReallyReallyLongMethod() {
+		
+		logger.info("request log from method with a really long name");
 		
 		return new ModelAndView("/index.jsp");
 	}
