@@ -18,7 +18,6 @@ import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;
-import ch.qos.logback.core.util.StatusPrinter;
 
 /**
  * This application generates log messages in numbers specified by the user.
@@ -55,8 +54,10 @@ public class EMail {
 				logger.warn("This is a warning message. Message number: " + i);
 			}
 		}
-
-		logger.error("At last an error.", new Exception("Just testing"));
+		
+		for (int i = 1; i < 6; i++) {
+			logger.error("At last an error.", new Exception("Just testing"));
+		}
 
 //		StatusPrinter.printInCaseOfErrorsOrWarnings(lc);
 	}
