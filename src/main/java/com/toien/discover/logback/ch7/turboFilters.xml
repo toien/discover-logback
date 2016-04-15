@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+
+	<turboFilter class="ch.qos.logback.classic.turbo.MDCFilter">
+		<MDCKey>username</MDCKey>
+		<value>sebastien</value>
+		<onMatch>ACCEPT</onMatch>
+	</turboFilter>
+
+	<turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+		<marker>billing</marker>
+		<onMatch>DENY</onMatch>
+	</turboFilter>
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%date [%thread] %-5level %logger - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<root level="info">
+		<appender-ref ref="console" />
+	</root>
+</configuration>

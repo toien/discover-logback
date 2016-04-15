@@ -17,5 +17,12 @@
 	<p><a href="log/info/10">info 10</a></p>
 	<p><a href="log/error">make a error</a></p>
 	<p><a href="log/longname">info from a long name method</a></p>
+	<h3>MDC</h3>
+	<ul>
+		<li><a href="log/factor/2">2</a></li>
+		<li><a href="log/factor/6">6</a></li>
+		<li><a href="log/factor/47">47</a></li>
+		<li><a href="log/factor/1000">1000</a></li>
+	</ul>
 </body>
 </html>
