@@ -1,4 +1,4 @@
-<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,5 +17,7 @@
 	<p><a href="log/info/10">info 10</a></p>
 	<p><a href="log/error">make a error</a></p>
 	<p><a href="log/longname">info from a long name method</a></p>
+
+	<script type="application/javascript" src="a.js"></script>
 </body>
 </html>
