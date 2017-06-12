@@ -1,0 +1,92 @@
+<configuration>
+	<property name="logHome" value="/data/log/dicover-logback" />
+
+	<appender name="infoFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- use the previously created timestamp to create a uniquely named log file -->
+		<file>${logHome}/info/current.log</file>
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %-50logger{50} %-30.-30method %-4line %msg%n%</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- the name of the rolled-over (archived) log files -->
+			<fileNamePattern>${logHome}/info/archived/%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 100MB -->
+				<maxFileSize>5MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy> 
+			<!-- maximum number of archive files to keep -->
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="errorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- deny all events with a level below ERROR, that is TRACE and DEBUG and INFO -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+		<!-- use the previously created timestamp to create a uniquely named log file -->
+		<file>${logHome}/error/current.log</file>
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %-50logger{50} %-30.-30method %-4line %msg%n%</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- the name of the rolled-over (archived) log files -->
+			<fileNamePattern>${logHome}/error/archived/%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 100MB -->
+				<maxFileSize>5MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy> 
+			<!-- maximum number of archive files to keep -->
+			<maxHistory>40</maxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="dependFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- use the previously created timestamp to create a uniquely named log file -->
+		<file>${logHome}/depend/current.log</file>
+		<encoder>
+			<pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %-50logger{50} %-30.-30method %-4line %msg%n%</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- the name of the rolled-over (archived) log files -->
+			<fileNamePattern>${logHome}/depend/archived/%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 100MB -->
+				<maxFileSize>5MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy> 
+			<!-- maximum number of archive files to keep -->
+			<maxHistory>40</maxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<property name="smtpHost" value="smtp.yeah.net" />
+	<property name="smtpPort" value="25" />
+	<property name="from" value="yeah_report@yeah.net" />
+	<property name="toMe" value="yeah_report@yeah.net" />
+
+	<appender name="email" class="ch.qos.logback.classic.net.SMTPAppender">
+		<smtpHost>${smtpHost}</smtpHost>
+		<smtpPort>${smtpPort}</smtpPort>
+		<username>yeah_report@yeah.net</username>
+		<password>1qaz2wsx</password>
+		<ssl>true</ssl>
+		<from>${from}</from>
+		<!-- <to>${toCrop}</to>
+		<to>${toRoy}</to> -->
+		<to>${toMe}</to>
+		<asynchronousSending>false</asynchronousSending>
+		<subject>bangumi: %logger{20} - %m</subject>
+		<layout class="ch.qos.logback.classic.html.HTMLLayout" />
+		<cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
+			<bufferSize>50</bufferSize>
+		</cyclicBufferTracker>
+		<evaluator class="com.toien.discover.logback.ch4.CounterBasedEvaluator"></evaluator>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="infoFile" />
+		<appender-ref ref="errorFile" />
+		<appender-ref ref="email" />
+	</root>
+
+</configuration>
