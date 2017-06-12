@@ -49,6 +49,15 @@
 		<filter-name>etagFilter</filter-name>
 		<url-pattern>*.css</url-pattern>
 	</filter-mapping>
+	
+	<filter>
+		<filter-name>mdcFilter</filter-name>
+		<filter-class>com.toien.discover.logback.web.filter.UserServletFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>mdcFilter</filter-name>
+		<url-pattern>/log/factor/*</url-pattern>
+	</filter-mapping>
 
 	<session-config>
 		<session-timeout>30</session-timeout>
